@@ -1,0 +1,3 @@
+// the configured options and settings for Tutorial
+#define PHOTONIC_VERSION_MAJOR @photonic_VERSION_MAJOR@
+#define PHOTONIC_VERSION_MINOR @photonic_VERSION_MINOR@
