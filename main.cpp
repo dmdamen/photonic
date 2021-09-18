@@ -4,7 +4,6 @@
 #include <iostream>
 #include <openssl/md5.h>
 #include <vector>
-#include <filesystem>
 
 #include "filereader.hpp"
 #include "hash.hpp"
@@ -41,7 +40,7 @@ int main(void) {
     size_t numFiles {0};
     for ( int index = 0; index < sources.size(); ++index ) {
 
-        for(const auto& p: std::filesystem::recursive_directory_iterator(std::filesystem::path(sources[index].asString()))) {
+        for (const auto& p: std::filesystem::recursive_directory_iterator(std::filesystem::path(sources[index].asString()))) {
             if (!std::filesystem::is_directory(p)) {
 
                 struct mediafile _mediafile {};
