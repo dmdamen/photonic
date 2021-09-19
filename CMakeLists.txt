@@ -11,18 +11,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 configure_file(photonic.hpp.in photonic.hpp)
 configure_file(config.json config.json COPYONLY)
 
-# add classes
-add_subdirectory(classes/hash)
-add_subdirectory(classes/filereader)
-add_subdirectory(classes/graph)
-
 # add the executable
 add_executable(photonic main.cpp)
 
 find_package(OpenSSL REQUIRED)
-find_package(jsoncpp REQUIRED)
 
-target_link_libraries(photonic PUBLIC graph filereader hash OpenSSL::SSL jsoncpp)
+target_link_libraries(photonic PUBLIC OpenSSL::SSL)
 #target_link_libraries(photonic PUBLIC hash)
 
 # add the binary tree to the search path for include files
