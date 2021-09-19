@@ -7,6 +7,9 @@ project(photonic VERSION 0.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# THios line fixes the std::filesystem linking error on RPi
+#set(CMAKE_CXX_FLAGS "-lstdc++fs" )
+
 # Pass the project version to the source code
 configure_file(photonic.hpp.in photonic.hpp)
 
@@ -15,7 +18,7 @@ add_executable(photonic main.cpp)
 
 find_package(OpenSSL REQUIRED)
 
-target_link_libraries(photonic PUBLIC OpenSSL::SSL)
+target_link_libraries(photonic PUBLIC OpenSSL::SSL stdc++fs)
 #target_link_libraries(photonic PUBLIC hash)
 
 # add the binary tree to the search path for include files
