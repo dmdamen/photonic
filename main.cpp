@@ -43,6 +43,7 @@ int main(int argc, char *argv[] ) {
 
     std::cout << "Photonic version " << PHOTONIC_VERSION_MAJOR << "." << PHOTONIC_VERSION_MINOR << std::endl;
 
+    return 0; 
     //loading configuration
     Json::Value root;
     std::ifstream config("config.json", std::ifstream::binary);
