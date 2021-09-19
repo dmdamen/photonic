@@ -9,7 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Pass the project version to the source code
 configure_file(photonic.hpp.in photonic.hpp)
-configure_file(config.json config.json COPYONLY)
 
 # add the executable
 add_executable(photonic main.cpp)
