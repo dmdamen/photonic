@@ -4,25 +4,6 @@
 #include <openssl/md5.h>
 #include <vector>
 
-//#include "photonic.hpp"
-
-struct mediafile {
-    std::string fingerprint;
-    std::string source;
-    std::string extension;
-    std::vector<std::string> destinations;
-};
-
-std::string getFileExt(const std::string& s) {
-
-   size_t i = s.rfind('.', s.length());
-   if (i != std::string::npos) {
-      return(s.substr(i+1, s.length() - i));
-   }
-
-   return("");
-}
-
 int main(int argc, char *argv[] ) {
 
     std::cout << "Photonic version 1.0" << std::endl;
