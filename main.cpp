@@ -27,6 +27,12 @@ int main(int argc, char *argv[] ) {
 
     std::cout << "Photonic version " << PHOTONIC_VERSION_MAJOR << "." << PHOTONIC_VERSION_MINOR << std::endl;
     
+    std::cout << argc << std::endl;
+
+    for (int i=0; i<argc; i++) {
+        std::cout << (std::string) argv[i];
+    }
+
     // Parse & test commandline parameters
 
     // Calculate sha256 for each file in the target folder
