@@ -8,13 +8,17 @@ int main(int argc, char *argv[] ) {
 
     std::cout << "Photonic version 1.0" << std::endl;
     
-    std::cout << argc << std::endl;
-
-    for (int i=0; i<argc; i++) {
-        std::cout << (std::string) argv[i] <<std::endl;
+    if (argc != 2) {
+        std::cerr << "Please provide exactly one parameter" << std::endl;
+        return 1;
     }
 
-    // Parse & test commandline parameters
+    if (!std::filesystem::is_directory(argv[1])) {
+        std::cerr << "Path '" << argv[1] << "' does not exist or is not a directory" << std::endl;
+        return 1;
+    }
+
+    
 
     // Calculate sha256 for each file in the target folder
         // try to add the file to a hash table. The sha256 is the key
