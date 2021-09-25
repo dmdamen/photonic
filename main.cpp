@@ -28,7 +28,7 @@ int main(int argc, char *argv[] ) {
 
     std::map<std::string, std::string> fingerprints;
     if (fingerprints.find("a") != fingerprints.end()) {
-
+        
     }
     fingerprints.insert(std::make_pair("a","a"));
     fingerprints.insert(std::make_pair("a","a"));
