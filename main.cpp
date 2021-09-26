@@ -61,7 +61,7 @@ int main(int argc, char *argv[] ) {
     }
 
     std::map<std::string, std::filesystem::directory_entry> keepers {};
-    std::vector<std::filesystem::directory_entry> fileToBeDeleted {};
+    std::vector<std::filesystem::directory_entry> filesToBeDeleted {};
     for (const auto& p: std::filesystem::recursive_directory_iterator(std::filesystem::path(target_directory))) {
         if (!std::filesystem::is_directory(p)) {
             std::string fp = get_fingerprint(p.path());
@@ -70,16 +70,15 @@ int main(int argc, char *argv[] ) {
                 keepers.insert(std::make_pair(fp,p));
             } else {
                 std::cout << "\u001b[31m-\u001b[0m " << fp << " " << p.path() << std::endl;
-                fileToBeDeleted.push_back(p);
+                filesToBeDeleted.push_back(p);
             }            
         }
     }
   
-    // Calculate sha256 for each file in the target folder
-        // try to add the file to a hash table. The sha256 is the key
-        // if add fails, add the file to an array of file that will be deleted
-
-        // show green '+' sign if file is added to
+    // Summary
+    std::cout << "Total number of files examined: " << keepers.size() + filesToBeDeleted.size() << std::endl;
+    std::cout << "Number of files deleted:        " << filesToBeDeleted.size() << std::endl;
+    std::cout << "Number of files remaining:      " << keepers.size() << std::endl;
 
 
     // delete all files that are listed in the array of deletion candidates
