@@ -23,7 +23,7 @@ std::string get_fingerprint(std::filesystem::path path) {
         SHA256_Update(_sha256state, buffer.data(), size);
     } else {
         throw std::runtime_error(std::string("Could not open file for reading" + (std::string) path));
-    }  
+    }
 
     file.close();
 
@@ -35,7 +35,7 @@ std::string get_fingerprint(std::filesystem::path path) {
     std::stringstream returnStream;
 
     for (int i=0; i < SHA256_DIGEST_LENGTH; i++) {
-		returnStream << std::setfill('0') 
+		returnStream << std::setfill('0')
                      << std::setw(2)
                      << std::hex
                      << (0xff & (md[i]));
@@ -71,10 +71,10 @@ int main(int argc, char *argv[] ) {
             } else {
                 std::cout << "\u001b[31m-\u001b[0m " << fp << " " << p.path() << std::endl;
                 filesToBeDeleted.push_back(p);
-            }            
+            }
         }
     }
-  
+
     // Summary
     std::cout << "Total number of files examined: " << keepers.size() + filesToBeDeleted.size() << std::endl;
     std::cout << "Number of files deleted:        " << filesToBeDeleted.size() << std::endl;
@@ -82,6 +82,9 @@ int main(int argc, char *argv[] ) {
 
 
     // delete all files that are listed in the array of deletion candidates
+    for (const auto& p: filesToBeDeleted) {
+	std::filesystem::remove(p);
+    }
 
     // rename all remaining files to sha256.ext
 
