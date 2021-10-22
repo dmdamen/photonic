@@ -6,6 +6,7 @@
 #include <vector>
 
 
+
 std::string get_fingerprint(std::filesystem::path path) {
 
     // Get file length
